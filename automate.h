@@ -4,10 +4,10 @@
 #include "etat.h"
 using namespace std;
 
-class Parser {
+class Automate {
 public:
-    Parser(Lexer& lex) ; 
-    ~Parser() ;
+    Automate(Lexer& lex) ; 
+    ~Automate() ;
     int parse(); 
 
     void pushEtat(Etat* e);
