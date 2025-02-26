@@ -41,25 +41,25 @@ int Automate::popVal() {
     return v;
 }
 
-int Automate::parse() {
-    Symbole* s = lexer.Consulter();
-    while (true) {
-        Etat* etat = currentEtat();
-        Action action = etat->transition(*this, s);
-        switch (action.ac) {
-            case DECALER:
-                lexer.Avancer();
-                s = lexer.Consulter();
-                break;
-            case REDUIRE:
+// int Automate::parse() {
+//     Symbole* s = lexer.Consulter();
+//     while (true) {
+//         Etat* etat = currentEtat();
+//         Action action = etat->transition(*this, s);
+//         switch (action.ac) {
+//             case DECALER:
+//                 lexer.Avancer();
+//                 s = lexer.Consulter();
+//                 break;
+//             case REDUIRE:
 
-                break;
-            case ACCEPTER:
-                return popVal();
-            case ERR:
-                cerr << "Erreur de syntaxe" << endl;
-                return -1;
-        }
-    }
-}
+//                 break;
+//             case ACCEPTER:
+//                 return popVal();
+//             case ERR:
+//                 cerr << "Erreur de syntaxe" << endl;
+//                 return -1;
+//         }
+//     }
+// }
 
