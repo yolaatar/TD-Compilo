@@ -4,7 +4,7 @@
 using namespace std;
 Automate::Automate(Lexer &lex) : lexer(lex)
 {
-    // Pour initialiser
+    pushEtat(new Etat0) ;
 }
 
 Automate::~Automate()

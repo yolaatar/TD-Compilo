@@ -1,7 +1,7 @@
 #pragma once
 #include <stack>
 #include "lexer.h"
-#include "etat.h"*
+#include "etat.h"
 using namespace std;
 
 class Automate {

@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -g -std=c++11
 TARGET = tp_compil
 
 # Fichiers sources et objets
-SRCS = main.cpp lexer.cpp symbole.cpp automate.cpp
+SRCS = main.cpp lexer.cpp symbole.cpp automate.cpp etat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(TARGET)
