@@ -15,6 +15,12 @@ Automate::~Automate()
         delete stackEtats.top();
         stackEtats.pop();
     }
+
+    while (!stackSymboles.empty())
+    {
+        delete stackSymboles.top();
+        stackSymboles.pop();
+    }
 }
 
 void Automate::pushEtat(Etat *e)
@@ -137,6 +143,8 @@ void Automate::lecture()
 
         s = lexer.Consulter();
     }
+
+    delete s;
     
     // Vérification de la fin de l'entrée pour décider de l'acceptation.
     if (this->accepter)
