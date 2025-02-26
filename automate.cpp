@@ -130,9 +130,11 @@ void Automate::lecture()
             cout << endl;
             break;
         }
+        currentEtat()->Affiche();
         // cout << "Current Symbol: ";
         //s->Affiche();
         //cout << endl;
+
         s = lexer.Consulter();
     }
     

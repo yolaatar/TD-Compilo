@@ -202,6 +202,12 @@ bool Etat6::transition(Automate &automate, Symbole *s)
         automate.decalage(s, new Etat9);
         break;
     }
+    default:
+    {
+        automate.decalage(new Symbole(ERREUR), NULL);
+        return false;
+    
+    }
     }
     return true;
 }
