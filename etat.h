@@ -15,7 +15,12 @@ struct Action {
 
 class Etat {
 public : 
-    virtual ~Etat() {}
+    Etat(string name);
+    virtual ~Etat();
+    void Affiche() const;
     virtual Action transition(Parser* parser, Symbole* s) = 0;
+
+protected:
+    string nom;
 };
 
