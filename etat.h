@@ -3,7 +3,7 @@
 #include "lexer.h"
 #include <memory>
 
-class Parser ; 
+class automate ; 
 
 enum ActionType {DECALER, REDUIRE, ACCEPTER, ERREUR};
 
@@ -16,6 +16,6 @@ struct Action {
 class Etat {
 public : 
     virtual ~Etat() {}
-    virtual Action transition(Parser* parser, Symbole* s) = 0;
+    virtual Action transition(automate* automate, Symbole* s) = 0;
 };
 
