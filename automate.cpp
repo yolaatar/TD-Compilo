@@ -67,6 +67,25 @@ void Automate::pushSymbole(Symbole* s) {
     stackSymboles.push(s);
 }
 
+Symbole *Automate::popSymbole()
+{
+    cout << "[PopSymbol] Popping symbol: ";
+    stackSymboles.top()->Affiche();
+    cout << endl;
+    Symbole *s = stackSymboles.top();
+    stackSymboles.pop();
+    return s;
+}
+
+void Automate::popAndDestroySymbole()
+{
+    cout << "[PopSymbol] Popping symbol: ";
+    stackSymboles.top()->Affiche();
+    cout << endl;
+    delete stackSymboles.top();
+    stackSymboles.pop();
+}
+
 void Automate::pushVal(int v)
 {
     stackVals.push(v);
@@ -84,29 +103,26 @@ void Automate::accept()
     this->accepter = true;
 }   
 
+Symbole *Automate::getSymbole()
+{
+    return stackSymboles.top();
+}
+
+bool Automate::isAccepted()
+{
+    return this->accepter;
+}
 void Automate::lecture()
 {
     cout << "Automate starting lecture..." << endl;
 
     // Démarrage avec l'état initial, ici Etat0 (assurez-vous que la classe Etat0 est correctement déclarée et définie)
     pushEtat(new Etat0());
-    // Vous pouvez appeler ici une fonction d'affichage de la pile si vous l'avez implémentée, par exemple afficherStack();
 
-    // Récupération du premier symbole depuis le Lexer.
-    // Notez que lexer est un objet (référence) et non un pointeur, donc on utilise le point.
     Symbole* s = lexer.Consulter();
 
-    // Boucle tant que le symbole lu n'est pas FIN.
-    // Ici, j'utilise s->getType() pour comparer le type du symbole. Si vous avez surchargé l'opérateur==, vous pouvez écrire :
-    //    while (*s != FIN)
-    while (*s != FIN)
+    while (!this->accepter)
     {
-        cout << "Current Symbol: ";
-        s->Affiche();
-        cout << endl;
-        
-        // Déclenchement de la transition dans l'état courant.
-        // Utilisation de currentEtat() qui renvoie le sommet de stackEtats.
         if (!currentEtat()->transition(*this, s))
         {
             cout << "Error: No valid transition for symbol ";
@@ -114,11 +130,9 @@ void Automate::lecture()
             cout << endl;
             break;
         }
-        
-        // (Optionnel) Affichage de la pile d'états pour le debug.
-        // afficherStack();
-
-        // Récupération du symbole suivant à traiter
+        cout << "Current Symbol: ";
+        s->Affiche();
+        cout << endl;
         s = lexer.Consulter();
     }
     

@@ -1,19 +1,33 @@
 #include "symbole.h"
 #include <iostream>
-#include <map>
 
-void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
+void Symbole::Affiche()
+{
+   cout << Etiquettes[ident];
 }
 
-void Entier::Affiche() {
+void Entier::Affiche()
+{
    Symbole::Affiche();
-   cout<<"("<<valeur<<")";
+   cout << "(" << valeur << ")";
 }
 
-class Expr : public Symbole {
-   public:
-      Expr(int i) : Symbole(i) { }
-      virtual ~Expr() { }
-      virtual double eval(const map<string,double> & valeurs) const = 0;
-};
+double ExprPlus::eval(const map<string, double> &valeurs)
+{
+   return exp1->eval(valeurs) + exp2->eval(valeurs);
+}
+
+double ExprMult::eval(const map<string, double> &valeurs)
+{
+   return exp1->eval(valeurs) * exp2->eval(valeurs);
+}
+
+double ExprPar::eval(const map<string, double> &valeurs)
+{
+   return exp->eval(valeurs);
+}
+
+double ExprVal::eval(const map<string, double> &valeurs)
+{
+   return entier->getValeur();
+}

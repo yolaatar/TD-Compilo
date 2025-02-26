@@ -8,12 +8,16 @@ class Automate {
 public:
     Automate(Lexer& lex) ; 
     ~Automate() ;
-    // int parse(); 
+    Symbole *getSymbole();
+    bool isAccepted();
+    // int parse();
     void lecture();
 
     void accept();
     void pushEtat(Etat* e);
     void pushSymbole(Symbole* s);
+    Symbole *popSymbole();
+    void popAndDestroySymbole();
     void popEtat(int n);
     Etat* currentEtat();
 
@@ -25,7 +29,6 @@ public:
 
     void reduction(int n, Symbole* s);
 
-    
     void pushVal(int v);
     int popVal();
 
