@@ -45,7 +45,7 @@ int Automate::parse() {
     Symbole* s = lexer.Consulter();
     while (true) {
         Etat* etat = currentEtat();
-        Action action = etat->transition(this, s);
+        Action action = etat->transition(*this, s);
         switch (action.ac) {
             case DECALER:
                 lexer.Avancer();
