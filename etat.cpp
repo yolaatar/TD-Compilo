@@ -84,7 +84,7 @@ bool Etat4::transition(Automate &automate, Symbole *s) {
             automate.decalage(s, new Etat2);
             break;
         case EXPR:
-            automate.decalage(s, new Etat7);
+            automate.transitionSimple(s, new Etat7);
             break;
         default:
             automate.decalage(new Symbole(ERREUR), NULL);
@@ -102,7 +102,7 @@ bool Etat5::transition(Automate &automate, Symbole *s) {
             automate.decalage(s, new Etat2);
             break;
         case EXPR:
-            automate.decalage(s, new Etat8);
+            automate.transitionSimple(s, new Etat8);
             break;
         default:
             automate.decalage(new Symbole(ERREUR), NULL);

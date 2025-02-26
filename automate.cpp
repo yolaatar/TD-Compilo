@@ -17,10 +17,6 @@ Automate::~Automate()
     }
 }
 
-Etat * Automate::getEtat(int i) {
-        return stackEtats.top();
-    }
-
 void Automate::pushEtat(Etat *e)
 {
     stackEtats.push(e);
