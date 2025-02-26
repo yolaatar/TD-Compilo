@@ -2,40 +2,82 @@
 #include "etat.h"
 #include <iostream>
 using namespace std;
-Automate::Automate(Lexer& lex) : lexer(lex) {
-    // Pour initialiser 
+Automate::Automate(Lexer &lex) : lexer(lex)
+{
+    // Pour initialiser
 }
 
-Automate::~Automate() {
+Automate::~Automate()
+{
     // Pour libérer la mémoire
-    while (!stackEtats.empty()) {
+    while (!stackEtats.empty())
+    {
         delete stackEtats.top();
         stackEtats.pop();
     }
 }
 
-void Automate::pushEtat(Etat* e) {
+Etat * Automate::getEtat(int i) {
+        return stackEtats.top();
+    }
+
+void Automate::pushEtat(Etat *e)
+{
     stackEtats.push(e);
 }
 
-void Automate::popEtat(int n) {
-    for (int i = 0; i < n; i++) {
-        if (!stackEtats.empty()) {
+void Automate::popEtat(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (!stackEtats.empty())
+        {
             delete stackEtats.top();
             stackEtats.pop();
         }
     }
 }
 
-Etat* Automate::currentEtat() {
+void Automate::decalage(Symbole *s, Etat *e)
+{
+    pushSymbole(s);
+    pushEtat(e);
+    lexer.Avancer();
+}
+
+void Automate::transitionSimple(Symbole *s, Etat *e)
+{
+    pushSymbole(s);
+    pushEtat(e);
+}
+
+void Automate::reduction(int n, Symbole *s)
+{
+    for (int i = 0; i < n; i++)
+    {
+        delete stackEtats.top();
+        stackEtats.pop();
+    }
+    Etat *e = currentEtat();
+    e->transition(*this, s);
+}
+
+Etat *Automate::currentEtat()
+{
     return stackEtats.top();
 }
 
-void Automate::pushVal(int v) {
+void Automate::pushSymbole(Symbole* s) {
+    stackSymboles.push(s);
+}
+
+void Automate::pushVal(int v)
+{
     stackVals.push(v);
 }
 
-int Automate::popVal() {
+int Automate::popVal()
+{
     int v = stackVals.top();
     stackVals.pop();
     return v;
@@ -62,4 +104,3 @@ int Automate::popVal() {
 //         }
 //     }
 // }
-
