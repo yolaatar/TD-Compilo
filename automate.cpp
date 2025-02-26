@@ -79,6 +79,11 @@ int Automate::popVal()
     return v;
 }
 
+void Automate::accept()
+{
+    this->accepter = true;
+}   
+
 void Automate::lecture()
 {
     cout << "Automate starting lecture..." << endl;
@@ -147,7 +152,3 @@ void Automate::lecture()
 //     }
 // }
 
-void Automate::accepter()
-{
-    this->accepter = true;
-}   

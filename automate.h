@@ -11,6 +11,7 @@ public:
     // int parse(); 
     void lecture();
 
+    void accept();
     void pushEtat(Etat* e);
     void pushSymbole(Symbole* s);
     void popEtat(int n);
@@ -27,8 +28,6 @@ public:
     
     void pushVal(int v);
     int popVal();
-
-    void accepter();
 
 private : 
     Lexer& lexer ; 
