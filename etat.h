@@ -3,7 +3,7 @@
 #include "lexer.h"
 #include <memory>
 
-class Parser ; 
+class Automate ; 
 
 enum ActionType {DECALER, REDUIRE, ACCEPTER, ERREUR};
 
@@ -18,7 +18,7 @@ public :
     Etat(string name);
     virtual ~Etat();
     void Affiche() const;
-    virtual Action transition(Parser* parser, Symbole* s) = 0;
+    virtual Action transition(Automate & automate, Symbole* s) = 0;
 
 protected:
     string nom;
