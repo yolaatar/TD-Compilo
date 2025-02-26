@@ -9,6 +9,7 @@ public:
     Automate(Lexer& lex) ; 
     ~Automate() ;
     // int parse(); 
+    void lecture();
 
     void pushEtat(Etat* e);
     void pushSymbole(Symbole* s);
