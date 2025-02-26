@@ -62,7 +62,7 @@ bool Etat2::transition(Automate &automate, Symbole *s) {
 
 bool Etat3::transition(Automate &automate, Symbole *s) {
     switch(*s){
-        case INT:
+        case PLUS:
         case MULT:
         case CLOSEPAR:
         case FIN:
