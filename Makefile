@@ -1,6 +1,7 @@
 # Compilateur et options
 CXX = g++
-CXXFLAGS = -Wall -Wextra -g -std=c++11
+CXXFLAGS = -Wall -Wextra -g -std=c++11 -fsanitize=address -fno-omit-frame-pointer
+
 
 # Cibles
 TARGET = tp_compil

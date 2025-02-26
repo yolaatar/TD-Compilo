@@ -114,7 +114,7 @@ bool Automate::isAccepted()
 }
 void Automate::lecture()
 {
-    cout << "Automate starting lecture..." << endl;
+    //cout << "Automate starting lecture..." << endl;
 
     // Démarrage avec l'état initial, ici Etat0 (assurez-vous que la classe Etat0 est correctement déclarée et définie)
     pushEtat(new Etat0());
@@ -130,9 +130,9 @@ void Automate::lecture()
             cout << endl;
             break;
         }
-        cout << "Current Symbol: ";
-        s->Affiche();
-        cout << endl;
+        // cout << "Current Symbol: ";
+        //s->Affiche();
+        //cout << endl;
         s = lexer.Consulter();
     }
     

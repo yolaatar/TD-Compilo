@@ -15,7 +15,7 @@ public :
     Etat(string name);
     Etat();
     virtual ~Etat();
-    void Affiche() const { cout << "Etat : " << nom << endl; };
+    void Affiche() const { cout << "Etat : " << nom << endl;};
     virtual bool transition(Automate & automate, Symbole* s) = 0;
 
 protected:
