@@ -118,7 +118,7 @@ void Automate::lecture()
     }
     
     // Vérification de la fin de l'entrée pour décider de l'acceptation.
-    if (*s != FIN)
+    if (this->accepter)
         cout << "Input accepted!" << endl;
     else
         cout << "Input not accepted!" << endl;
@@ -146,3 +146,8 @@ void Automate::lecture()
 //         }
 //     }
 // }
+
+void Automate::accepter()
+{
+    this->accepter = true;
+}   

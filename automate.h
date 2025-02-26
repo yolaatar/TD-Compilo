@@ -28,9 +28,12 @@ public:
     void pushVal(int v);
     int popVal();
 
+    void accepter();
+
 private : 
     Lexer& lexer ; 
     stack<Etat*> stackEtats;
     stack<int> stackVals;
     stack<Symbole*> stackSymboles;
+    bool accepter = false;
 };
